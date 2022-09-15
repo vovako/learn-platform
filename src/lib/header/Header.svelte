@@ -1,10 +1,12 @@
 <script>
 	import logo from './logo.png';
+	import { page } from '$app/stores';
+	let menu=false
 </script>
 
 <header class="header">
 	<div class="header__container _container">
-		<button type="button" data-popup-id="menu-sidebar" class="header__menu-btn icon-menu">
+		<button on:click={()=>menu=true}  type="button" data-popup-id="menu-sidebar" class="header__menu-btn icon-menu">
 			<span></span>
 			<span></span>
 			<span></span>
@@ -25,15 +27,15 @@
 		</div>
 	</div>
 
-	<div id="menu-sidebar" class="menu-sidebar">
+	<div on:pointerup={()=>menu=false} class:curious={menu} class="menu-sidebar">
 		<div class="menu-sidebar__bg"></div>
 		<div class="menu-sidebar__content">
-			<button class="menu-sidebar__close popup__close">&#10006</button>
+			<button on:click={()=>menu=false} class="menu-sidebar__close popup__close">&#10006</button>
 			<ul class="menu-sidebar__list">
-				<li class="menu-sidebar__item"><a href="/">Главная</a></li>
-				<li class="menu-sidebar__item"><a href="#">Персонажи</a></li>
-				<li class="menu-sidebar__item"><a href="#">Предметы</a></li>
-				<li class="menu-sidebar__item"><a href="#">Кабинет</a></li>
+				<li class:active={$page.url.pathname === '/'} class="menu-sidebar__item"><a href="/">Главная</a></li>
+				<li class:active={$page.url.pathname === '/Persons'} class="menu-sidebar__item"><a href="/Persons">Персонажи</a></li>
+				<li class:active={$page.url.pathname === '/Subjects'} class="menu-sidebar__item"><a href="/Subjects">Предметы</a></li>
+				<li class:active={$page.url.pathname === '/Account'} class="menu-sidebar__item"><a href="/Account">Кабинет</a></li>
 			</ul>
 			<button data-popup-id="login-popup" class="btn btn_dark menu-sidebar__btn">Войти</button>
 			<button data-popup-id="reg-popup" class="btn menu-sidebar__btn">Регистрация</button>
@@ -70,8 +72,7 @@
 }
 
 .menu-sidebar {
-
-	&._active {
+	&.curious {
 		.menu-sidebar__content {
 			transform: translateX(0%);
 		}
