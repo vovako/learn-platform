@@ -1,39 +1,39 @@
 //Futura PT Light
 @font-face {
 	font-family: 'Futura PT Light';
-	src: url('fonts/FuturaPT-Light.eot');
-	src: url('fonts/FuturaPT-Light.eot?#iefix') format('embedded-opentype'),
-		url('fonts/FuturaPT-Light.woff') format('woff'),
-		url('fonts/FuturaPT-Light.ttf') format('truetype');
+	src: url('./fonts/FuturaPT-Light.eot');
+	src: url('./fonts/FuturaPT-Light.eot?#iefix') format('embedded-opentype'),
+		url('./fonts/FuturaPT-Light.woff') format('woff'),
+		url('./fonts/FuturaPT-Light.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
 
 // Geometria
-@font-face {
+@font-face { 
 	font-family: 'Geometria';
-	src: url('fonts/Geometria-Bold.eot');
-	src: url('fonts/Geometria-Bold.eot?#iefix') format('embedded-opentype'),
-		url('fonts/Geometria-Bold.woff') format('woff'),
-		url('fonts/Geometria-Bold.ttf') format('truetype');
+	src: url('./fonts/Geometria-Bold.eot');
+	src: url('./fonts/Geometria-Bold.eot?#iefix') format('embedded-opentype'),
+		url('./fonts/Geometria-Bold.woff') format('woff'),
+		url('./fonts/Geometria-Bold.ttf') format('truetype');
 	font-weight: 700;
 	font-style: normal;
 }
 @font-face {
 	font-family: 'Geometria';
-	src: url('fonts/Geometria-Medium.eot');
-	src: url('fonts/Geometria-Medium.eot?#iefix') format('embedded-opentype'),
-		url('fonts/Geometria-Medium.woff') format('woff'),
-		url('fonts/Geometria-Medium.ttf') format('truetype');
+	src: url('./fonts/Geometria-Medium.eot');
+	src: url('./fonts/Geometria-Medium.eot?#iefix') format('embedded-opentype'),
+		url('./fonts/Geometria-Medium.woff') format('woff'),
+		url('./fonts/Geometria-Medium.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
 @font-face {
 	font-family: 'Geometria';
-	src: url('fonts/Geometria-Light.eot');
-	src: url('fonts/Geometria-Light.eot?#iefix') format('embedded-opentype'),
-		url('fonts/Geometria-Light.woff') format('woff'),
-		url('fonts/Geometria-Light.ttf') format('truetype');
+	src: url('./fonts/Geometria-Light.eot');
+	src: url('./fonts/Geometria-Light.eot?#iefix') format('embedded-opentype'),
+		url('./fonts/Geometria-Light.woff') format('woff'),
+		url('./fonts/Geometria-Light.ttf') format('truetype');
 	font-weight: 300;
 	font-style: normal;
 }
