@@ -6,9 +6,11 @@
 	let regPopup = false;
 	let loginPopup = false;
 	console.log('reg '+ regPopup);
+	const onHideRegPopup=(event)=>regPopup=event.details
+	const onHideLoginPopup=(event)=>loginPopup=event.details
 </script>
 
-<Popup id="reg-popup" active={regPopup}>
+<Popup id="reg-popup" on:hide={onHideRegPopup} active={regPopup}>
 	<div class="popup__title">Регистрация</div>
 	<input class="popup__input" type="text" placeholder="Имя">
 	<input class="popup__input" type="text" placeholder="Фамилия">
@@ -18,7 +20,7 @@
 	<input class="popup__input" type="password" placeholder="Повторите пароль">
 	<button class="btn popup__btn" type="submit">Зарегистрироваться</button>
 </Popup>
-<Popup id="login-popup" active={loginPopup}>
+<Popup id="login-popup" on:hide={onHideLoginPopup} active={loginPopup}>
 	<div class="popup__title">Вход</div>
 	<input class="popup__input" type="text" placeholder="Логин">
 	<input class="popup__input" type="password" placeholder="Пароль">
@@ -72,18 +74,18 @@
 				>
 					<a href="/">Главная</a>
 				</li>
-				<li class:active={$page.url.pathname === '/persons'} class="menu-sidebar__item">
-					<a href="/persons">Персонажи</a>
+				<li on:click={()=>menu=false} class:active={$page.url.pathname === '/Persons'} class="menu-sidebar__item">
+					<a href="/Persons">Персонажи</a>
 				</li>
-				<li class:active={$page.url.pathname === '/subjects'} class="menu-sidebar__item">
-					<a href="/subjects">Предметы</a>
+				<li on:click={()=>menu=false} class:active={$page.url.pathname === '/Subjects'} class="menu-sidebar__item">
+					<a href="/Subjects">Предметы</a>
 				</li>
-				<li class:active={$page.url.pathname === '/account'} class="menu-sidebar__item">
-					<a href="/account">Кабинет</a>
+				<li on:click={()=>menu=false} class:active={$page.url.pathname === '/Account'} class="menu-sidebar__item">
+					<a href="/Account">Кабинет</a>
 				</li>
 			</ul>
-			<button on:click={() => (loginPopup = true)} data-popup-id="login-popup" class="btn btn_dark menu-sidebar__btn">Войти</button>
-			<button on:click={() => (regPopup = true)} data-popup-id="reg-popup" class="btn menu-sidebar__btn">Регистрация</button>
+			<button on:click={() => loginPopup = true} data-popup-id="login-popup" class="btn btn_dark menu-sidebar__btn">Войти</button>
+			<button on:click={() => regPopup = true} data-popup-id="reg-popup" class="btn menu-sidebar__btn">Регистрация</button>
 		</div>
 	</div>
 </header>
