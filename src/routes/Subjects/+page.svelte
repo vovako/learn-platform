@@ -2,7 +2,7 @@
 
 <svelte:head>
 	<title>Предметы</title>
-	<meta name="description" content="Subjects" />
+	<meta name="description" content="subjects" />
 </svelte:head>
 <main>
 	<section class="subject-choice">

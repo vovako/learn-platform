@@ -1,16 +1,12 @@
 <script>
-	import Popup from '../popup/Popup.svelte';
-	import logo from './logo.png';
+	import Popup from '$lib/popup/Popup.svelte';
 	import { page } from '$app/stores';
 	let menu = false;
-	let regPopup = false;
-	let loginPopup = false;
-	console.log('reg '+ regPopup);
-	const onHideRegPopup=(event)=>regPopup=event.details
-	const onHideLoginPopup=(event)=>loginPopup=event.details
+	let regPopup, loginPopup = false;
+	let menuClose = () => menu = false;
 </script>
 
-<Popup id="reg-popup" on:hide={onHideRegPopup} active={regPopup}>
+<Popup bind:active={regPopup}>
 	<div class="popup__title">Регистрация</div>
 	<input class="popup__input" type="text" placeholder="Имя">
 	<input class="popup__input" type="text" placeholder="Фамилия">
@@ -20,7 +16,7 @@
 	<input class="popup__input" type="password" placeholder="Повторите пароль">
 	<button class="btn popup__btn" type="submit">Зарегистрироваться</button>
 </Popup>
-<Popup id="login-popup" on:hide={onHideLoginPopup} active={loginPopup}>
+<Popup bind:active={loginPopup}>
 	<div class="popup__title">Вход</div>
 	<input class="popup__input" type="text" placeholder="Логин">
 	<input class="popup__input" type="password" placeholder="Пароль">
@@ -30,12 +26,7 @@
 
 <header class="header">
 	<div class="header__container _container">
-		<button
-			on:click={() => (menu = true)}
-			type="button"
-			data-popup-id="menu-sidebar"
-			class="header__menu-btn icon-menu"
-		>
+		<button on:click={() => (menu = true)} class="header__menu-btn icon-menu">
 			<span />
 			<span />
 			<span />
@@ -50,56 +41,52 @@
 				<div class="profile__name">Name Name</div>
 				<div class="profile__label">Личный кабинет</div>
 			</div>
-			<a
-				class:active={$page.url.pathname === '/account'}
-				href="/account"
-				class="profile__avatar _ibg"
-			>
+			<a class:active={$page.url.pathname === '/account'} href="/account" class="profile__avatar">
 				<img src="./images/profile-icon.svg" alt="" />
 			</a>
 		</div>
 	</div>
 
 	<div class:_active={menu} class="menu-sidebar">
-		<div on:click={() => (menu = false)} class="menu-sidebar__bg" />
+		<div on:click={menuClose} class="menu-sidebar__bg" />
 		<div class="menu-sidebar__content">
-			<button on:click={() => (menu = false)} class="menu-sidebar__close popup__close"
+			<button on:click={menuClose} class="menu-sidebar__close popup__close"
 				>&#10006</button
 			>
 			<ul class="menu-sidebar__list">
 				<li
-					on:click={() => (menu = false)}
+					on:click={menuClose}
 					class:active={$page.url.pathname === '/'}
 					class="menu-sidebar__item"
 				>
 					<a href="/">Главная</a>
 				</li>
-				<li on:click={()=>menu=false} class:active={$page.url.pathname === '/Persons'} class="menu-sidebar__item">
-					<a href="/Persons">Персонажи</a>
+				<li on:click={menuClose} class:active={$page.url.pathname === '/persons'} class="menu-sidebar__item">
+					<a href="/persons">Персонажи</a>
 				</li>
-				<li on:click={()=>menu=false} class:active={$page.url.pathname === '/Subjects'} class="menu-sidebar__item">
-					<a href="/Subjects">Предметы</a>
-				</li>
-				<li on:click={()=>menu=false} class:active={$page.url.pathname === '/Account'} class="menu-sidebar__item">
-					<a href="/Account">Кабинет</a>
+				<li on:click={menuClose} class:active={$page.url.pathname === '/subjects'} class="menu-sidebar__item">
+					<a href="/subjects">Предметы</a>
+				</li> 
+				<li on:click={menuClose} class:active={$page.url.pathname === '/account'} class="menu-sidebar__item">
+					<a href="/account">Кабинет</a>
 				</li>
 			</ul>
-			<button on:click={() => loginPopup = true} data-popup-id="login-popup" class="btn btn_dark menu-sidebar__btn">Войти</button>
-			<button on:click={() => regPopup = true} data-popup-id="reg-popup" class="btn menu-sidebar__btn">Регистрация</button>
+			<button on:click={() => loginPopup = true} class="btn btn_dark menu-sidebar__btn">Войти</button>
+			<button on:click={() => regPopup = true} class="btn menu-sidebar__btn">Регистрация</button>
 		</div>
 	</div>
-</header>
+</header> 
+ 
 
-
-<style lang="scss">
+<style lang="scss">  
 	.header {
 		width: 100%;
 		background-color: #fff;
 		box-shadow: 0 4px 10px rgba(darkBlue, 0.35);
 
 		&__container {
-			padding: 8px 0;
-			display: flex;
+			padding: 8px 0; 
+			display: flex; 
 			justify-content: space-between;
 			align-items: center;
 		}
