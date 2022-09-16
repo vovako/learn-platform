@@ -1,13 +1,15 @@
 <script>
+	import { createEventDispatcher } from 'svelte';
 	export let id;
 	export let active = false;
+	let dispatch=createEventDispatcher()
 </script>
 
 <form action="#" class:_active={active} class="popup" {id}>
-	<div on:click={() => (active = false)} class="popup__bg" />
+	<div on:click={() => dispatch('hide',false)} class="popup__bg" />
 	<div class="popup__content">
 		<slot />
-		<button on:click={() => (active = false)}
+		<button on:click={() => dispatch('hide',false)}
 		type="button" class="popup__close">&#10006</button>
 	</div>
 </form>
