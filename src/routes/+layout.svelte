@@ -1,7 +1,6 @@
 <script>
 	import { page } from '$app/stores';
 	import '../app.scss';
-	import { onMount } from 'svelte';
 
 	//header
 	let menu = false;
@@ -12,10 +11,6 @@
 	
 	//вход в аккаунт
 	let logined = false;
-	onMount( () => {
-		sessionStorage.setItem('logined', false);
-		logined = sessionStorage.getItem('logined') == 'true';
-	});
 </script>
 
 <header class="header">
