@@ -1,4 +1,6 @@
-<script></script>
+<script>
+	
+</script>
 
 <svelte:head>
 	<title>Предметы</title>
